@@ -18,6 +18,7 @@ def get_time_between(start_time, end_time):
     return time_between
 
 def calculate_productivity(time_taken,bench_time):
+    "Caluclutes productivity rounded to nearest whole number"
     prod = bench_time/time_taken*100
     return round(prod)
 
