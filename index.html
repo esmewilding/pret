@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Productivity Calculater</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     </head>
 
     <body>
         <h1>Unofficial Pret A Manger Productivity Calculater</h1>
         <form id="myForm">
             <!-- TODO: add input validation -->
-            <p>Start time: <input type="time" name="stime"></p>
-            <p>End time: <input type="time" name="etime"></p>
-            <p>Bench time: <input type="int" name="btime"> minutes</p>
+            <p>Start time: <input type="time" name="stime" required></p>
+            <p>End time: <input type="time" name="etime" required></p>
+            <p>Bench time: <input type="int" name="btime" required> minutes</p>
             <button type="button" onclick="formSubmit()">Calculate</button>
         </form>
 
