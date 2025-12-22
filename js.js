@@ -7,7 +7,7 @@ function formSubmit() {
 
     const timeBtwn = getTimeBtwn(stime,etime);
 
-    document.getElementById("result").innerHTML = timeBtwn;
+    document.getElementById("result").innerHTML = "The bench took " + timeBtwn + " minutes to complete. Productivity was " + calculateProductivity(timeBtwn, btime) + "%.";
 }
 
 function convert2jsDate(timeValue) {
@@ -27,4 +27,9 @@ function getTimeBtwn(stime,etime) {
 
     elapsed = elapsed/(1000*60); //in minutes
     return elapsed;
+}
+
+function calculateProductivity(timeBtwn, btime) {
+    let prod = btime/timeBtwn*100;
+    return Math.round(prod);
 }
