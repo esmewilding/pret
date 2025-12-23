@@ -6,6 +6,7 @@ function formSubmit() {
         const etime = convert2jsDate(formData[1].value);
         const btime = formData[2].value;
 
+        // throws error if an incorrect input is found
         if(isNaN(stime) || isNaN(etime) || isNaN(btime) || btime <= 0) throw "not a number";
 
         const timeBtwn = getTimeBtwn(stime,etime);
