@@ -1,19 +1,23 @@
 function formSubmit() {
-    const formData = document.getElementById("myForm");
+    const formData = document.getElementById("myForm"); // get values from form
 
-    const stime = convert2jsDate(formData[0].value); // get value from form
+    const stime = convert2jsDate(formData[0].value);
     const etime = convert2jsDate(formData[1].value);
     const btime = formData[2].value;
 
     const timeBtwn = getTimeBtwn(stime,etime);
 
-    document.getElementById("result").innerHTML = "The bench took " + timeBtwn + " minutes to complete. Productivity was " + calculateProductivity(timeBtwn, btime) + "%.";
+    // if (!isNaN(timeBtwn) && !isNull(btime)) { // is not not a number
+        document.getElementById("result").innerHTML = "The bench took " + timeBtwn + " minutes to complete. Productivity was " + calculateProductivity(timeBtwn, btime) + "%.";
+    // } else {
+    //     document.getElementById("result").innerHTML ="Cannot calculate productivity.";
+    // }
 }
 
 function convert2jsDate(timeValue) {
-     // split time value into hours and minutes
+     // takes HTML time input and converts it to a javascript date object
     let [hours, minutes] = timeValue.split(":").map(Number);
-    let dateObject = new Date(1970, 0, 1, hours, minutes);
+    let dateObject = new Date(1970, 0, 1, hours, minutes); // only care about time so date is unimportant
     return dateObject;
 }
 
@@ -21,10 +25,10 @@ function getTimeBtwn(stime,etime) {
     let elapsed = etime - stime; // in milliseconds
 
     if(elapsed < 0){ //if bench is started before midnight and finished after
-        etime.setDate(2);
+        etime.setDate(2); // moves end time to next day
         elapsed = etime - stime;
     }
-
+        
     elapsed = elapsed/(1000*60); //in minutes
     return elapsed;
 }
