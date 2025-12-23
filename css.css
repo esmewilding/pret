@@ -1,10 +1,15 @@
 #header {
     color: #9C2007;
     text-align: center;
+    font-size: 150%;
 }
 
 div {
     text-align: center;
+}
+
+#myForm {
+    font-size: 150%;
 }
 
 #git-logo {
