@@ -1,17 +1,19 @@
 function formSubmit() {
     const formData = document.getElementById("myForm"); // get values from form
 
-    const stime = convert2jsDate(formData[0].value);
-    const etime = convert2jsDate(formData[1].value);
-    const btime = formData[2].value;
+    try {
+        const stime = convert2jsDate(formData[0].value);
+        const etime = convert2jsDate(formData[1].value);
+        const btime = formData[2].value;
 
-    const timeBtwn = getTimeBtwn(stime,etime);
+        if(isNaN(stime) || isNaN(etime) || isNaN(btime) || btime <= 0) throw "not a number";
 
-    // if (!isNaN(timeBtwn) && !isNull(btime)) { // is not not a number
+        const timeBtwn = getTimeBtwn(stime,etime);
+
         document.getElementById("result").innerHTML = "The bench took " + timeBtwn + " minutes to complete. Productivity was " + calculateProductivity(timeBtwn, btime) + "%.";
-    // } else {
-    //     document.getElementById("result").innerHTML ="Cannot calculate productivity.";
-    // }
+    } catch (err) {
+        document.getElementById("result").innerHTML = "Cannot calculate productivity"
+    }
 }
 
 function convert2jsDate(timeValue) {
