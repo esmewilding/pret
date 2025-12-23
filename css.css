@@ -6,3 +6,13 @@
 div {
     text-align: center;
 }
+
+#git-logo {
+    width: 10%;
+    height: auto;
+}
+
+#git-link {
+    position: absolute;
+    bottom: 0;
+}
