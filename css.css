@@ -9,6 +9,10 @@ div {
     font-size: 150%;
 }
 
+input, button {
+    touch-action: manipulation;
+}
+
 #git-logo {
     width: 10%;
     height: auto;
