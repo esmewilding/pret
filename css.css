@@ -14,13 +14,25 @@ input, button {
 }
 
 #git-logo {
-    width: 10%;
+    width: 5%;
     height: auto;
+    bottom: 0;
+    right: 0;
+    position: absolute;
 }
 
-#git-link {
+#footerMenu {
     position: absolute;
     bottom: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footerMenu_li {
+    float: left;
+    font-size: 100%;
+    margin-left: 1%
 }
 
 
@@ -38,3 +50,4 @@ input, button {
     font-size: 50%;
   }
 }
+
