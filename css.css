@@ -22,3 +22,19 @@ input, button {
     position: absolute;
     bottom: 0;
 }
+
+
+/* Mobile formatting*/
+@media (orientation: portrait) {
+  #header {
+    font-size: 175%;
+  }
+
+  div {
+    font-size: 250%;
+  }
+
+  button {
+    font-size: 50%;
+  }
+}
