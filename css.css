@@ -10,8 +10,11 @@ div {
 }
 
 #git-logo {
-    width: 10%;
-    height: 10%;
+    width: 5%;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    position: absolute;
 }
 
 #footerMenu {
@@ -25,4 +28,5 @@ div {
 .footerMenu_li {
     float: left;
     font-size: 100%;
+    margin-left: 1%
 }
