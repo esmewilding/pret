@@ -2,9 +2,9 @@ function formSubmit() {
     const formData = document.getElementById("myForm"); // get values from form
 
     try {
-        const stime = convert2jsDate(formData[0].value);
-        const etime = convert2jsDate(formData[1].value);
-        const btime = formData[2].value;
+        const stime = convert2jsDate(formData.stime.value)
+        const etime = convert2jsDate(formData.etime.value);
+        const btime = formData.btime.value;
 
         // throws error if an incorrect input is found
         if(isNaN(stime) || isNaN(etime) || isNaN(btime) || btime <= 0) throw "not a number";
@@ -15,6 +15,10 @@ function formSubmit() {
     } catch (err) {
         document.getElementById("result").innerHTML = "Cannot calculate productivity";
     }
+}
+
+function showAdvancded() {
+
 }
 
 function convert2jsDate(timeValue) {
