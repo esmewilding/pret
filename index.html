@@ -13,10 +13,18 @@
         </div>
 
         <div>
+            <button type="button" onclick="showAdvanced()">Toggle Advanced</button>
+
             <form id="myForm">
                 <p>Start time: <input type="time" name="stime"></p>
+                <span id="hidden">
+                    <p>Paused working: <input type="time" name="e_time_2"></p>
+                    <p>Restarted working: <input type="time" name="restime"></p>
+                </span>
                 <p>End time: <input type="time" name="etime"></p>
+
                 <p>Bench time: <input type="number" name="btime" size="4"> minutes</p>
+
                 <button type="button" onclick="formSubmit()">Calculate</button>
             </form>
         </div>

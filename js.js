@@ -17,8 +17,15 @@ function formSubmit() {
     }
 }
 
-function showAdvancded() {
-
+function showAdvanced() {
+    // https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+    var x = document.getElementById("hidden");
+    console.log(x.style);
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
 }
 
 function convert2jsDate(timeValue) {
