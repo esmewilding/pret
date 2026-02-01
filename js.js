@@ -2,9 +2,14 @@ function formSubmit() {
     const formData = document.getElementById("myForm"); // get values from form
 
     try {
-        const stime = convert2jsDate(formData.stime.value)
+        // main form fields (required)
+        const stime = convert2jsDate(formData.stime.value);
         const etime = convert2jsDate(formData.etime.value);
         const btime = formData.btime.value;
+
+        // additional form fields
+        const pauseStart = convert2jsDate(formData.e_time_2.value);
+        const retime = convert2jsDate(formData.restime.value);
 
         // throws error if an incorrect input is found
         if(isNaN(stime) || isNaN(etime) || isNaN(btime) || btime <= 0) throw "not a number";
@@ -20,7 +25,6 @@ function formSubmit() {
 function showAdvanced() {
     // https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
     var x = document.getElementById("hidden");
-    console.log(x.style);
     if (x.style.display === "block") {
         x.style.display = "none";
     } else {
@@ -36,12 +40,20 @@ function convert2jsDate(timeValue) {
 }
 
 function getTimeBtwn(stime,etime) {
-    let elapsed = etime - stime; // in milliseconds
+    let x = document.getElementById("hidden");
+    let elapsed;
 
-    if(elapsed < 0){ //if bench is started before midnight and finished after
-        etime.setDate(2); // moves end time to next day
-        elapsed = etime - stime;
+    if (x.style.display === "block") { // if additional form fields are visible
+        console.log("additional form fields are visible");
+    } else {
+        elapsed = etime - stime; // time in milliseconds
+
+        if(elapsed < 0){ //if bench is started before midnight and finished after
+            etime.setDate(2); // moves end time to next day
+            elapsed = etime - stime;
+        }
     }
+
         
     elapsed = elapsed/(1000*60); //in minutes
     return elapsed;
