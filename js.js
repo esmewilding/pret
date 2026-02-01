@@ -7,12 +7,23 @@ function formSubmit() {
         const etime = convert2jsDate(formData.etime.value);
         const btime = formData.btime.value;
 
-        // additional form fields
-        const pauseStart = convert2jsDate(formData.e_time_2.value);
-        const retime = convert2jsDate(formData.restime.value);
-
         // throws error if an incorrect input is found
-        if(isNaN(stime) || isNaN(etime) || isNaN(btime) || btime <= 0) throw "not a number";
+        if(isNaN(stime) || isNaN(etime) || isNaN(btime) || btime <= 0) {
+            console.warn("incorrect basic form input");
+            throw "not a number";
+        }
+
+        // additional form fields
+        const hiddenForm = document.getElementById("hidden");
+        if (hiddenForm.style.display === "block") { // if additional form fields are visible
+            const pauseStart = convert2jsDate(formData.e_time_2.value);
+            const retime = convert2jsDate(formData.restime.value);
+
+            if(isNaN(pauseStart) || isNaN(retime)) {
+                console.warn("incorrect time away from bench input");
+                throw "not a number";
+            }
+        }
 
         const timeBtwn = getTimeBtwn(stime,etime);
 
@@ -44,7 +55,9 @@ function getTimeBtwn(stime,etime) {
     let elapsed;
 
     if (x.style.display === "block") { // if additional form fields are visible
-        console.log("additional form fields are visible");
+        console.log("Hello");
+        // elapsed = (etime - x.restime.value) + (x.e_time_2.value - stime);
+        //TODO: allow time to continue over midnight
     } else {
         elapsed = etime - stime; // time in milliseconds
 
