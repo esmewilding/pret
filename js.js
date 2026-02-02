@@ -6,7 +6,7 @@ function formSubmit() {
         const stime = convert2jsDate(formData.stime.value);
         const etime = convert2jsDate(formData.etime.value);
         const btime = formData.btime.value;
-        
+
         let timeBtwn;
 
         // throws error if an incorrect input is found
@@ -38,8 +38,8 @@ function formSubmit() {
 }
 
 function showAdvanced() {
-    // https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
-    var x = document.getElementById("hidden");
+    // shows/hides additonal form fields
+    let x = document.getElementById("hidden");
     if (x.style.display === "block") {
         x.style.display = "none";
     } else {
@@ -65,8 +65,7 @@ function getTimeBtwn(stime,etime,pauseStart=null,retime=null) {
             elapsed = etime - stime;
         }
     } else {
-        console.log("hello");
-        // elapsed = (etime - x.restime.value) + (x.e_time_2.value - stime);
+        elapsed = (etime - retime) + (pauseStart - stime);
         //TODO: allow time to continue over midnight
     }
 
