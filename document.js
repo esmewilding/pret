@@ -1,0 +1,1 @@
+document.getElementById("footerMenuP").innerHTML = '<ul id="footerMenu"></li><li class="footerMenu_li"><a href="about.html">How to use this website</a></li><li class="footerMenu_li">This website does not collect any data</li></ul><a href="https://github.com/esmewilding/pret"><img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" id="git-logo"></a>'
