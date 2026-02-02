@@ -6,6 +6,8 @@ function formSubmit() {
         const stime = convert2jsDate(formData.stime.value);
         const etime = convert2jsDate(formData.etime.value);
         const btime = formData.btime.value;
+        
+        let timeBtwn;
 
         // throws error if an incorrect input is found
         if(isNaN(stime) || isNaN(etime) || isNaN(btime) || btime <= 0) {
@@ -23,9 +25,11 @@ function formSubmit() {
                 console.warn("incorrect time away from bench input");
                 throw "not a number";
             }
-        }
 
-        const timeBtwn = getTimeBtwn(stime,etime);
+            timeBtwn = getTimeBtwn(stime,etime,pauseStart,retime);
+        } else {
+            timeBtwn = getTimeBtwn(stime,etime);
+        }
 
         document.getElementById("result").innerHTML = "The bench took " + timeBtwn + " minutes to complete. Productivity was " + calculateProductivity(timeBtwn, btime) + "%.";
     } catch (err) {
@@ -50,21 +54,20 @@ function convert2jsDate(timeValue) {
     return dateObject;
 }
 
-function getTimeBtwn(stime,etime) {
-    let x = document.getElementById("hidden");
+function getTimeBtwn(stime,etime,pauseStart=null,retime=null) {
     let elapsed;
 
-    if (x.style.display === "block") { // if additional form fields are visible
-        console.log("Hello");
-        // elapsed = (etime - x.restime.value) + (x.e_time_2.value - stime);
-        //TODO: allow time to continue over midnight
-    } else {
+    if (pauseStart===null) { // if additional form fields are in use
         elapsed = etime - stime; // time in milliseconds
 
         if(elapsed < 0){ //if bench is started before midnight and finished after
             etime.setDate(2); // moves end time to next day
             elapsed = etime - stime;
         }
+    } else {
+        console.log("hello");
+        // elapsed = (etime - x.restime.value) + (x.e_time_2.value - stime);
+        //TODO: allow time to continue over midnight
     }
 
         
