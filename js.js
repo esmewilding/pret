@@ -71,7 +71,6 @@ function getTimeBtwn(stime,etime,pauseStart=null,retime=null) {
 
         
     elapsed = elapsed/(1000*60); //in minutes
-    console.log(elapsed);
     return elapsed;
 }
 
@@ -80,4 +79,4 @@ function calculateProductivity(timeBtwn, btime) {
     return Math.round(prod);
 }
 
-module.exports = getTimeBtwn;
+module.exports = { convert2jsDate, getTimeBtwn, calculateProductivity };
