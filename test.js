@@ -15,6 +15,9 @@ test('get time between', async () => {
     let pauseStart = convert2jsDate("6:05");
     let restime = convert2jsDate("6:10");
     assert.equal(getTimeBtwn(stime,etime,pauseStart,restime),55);
+
+    etime = convert2jsDate("00:30");
+    assert.equal(getTimeBtwn(stime,etime),1140);
 });
 
 test('calculate productivity', async () => {
