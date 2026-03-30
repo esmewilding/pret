@@ -28,7 +28,7 @@
         <h2>Report an Issue</h2>
         <p>
             <form action="issueForm.php" method="POST" id="reportForm">
-                <textarea name="issueDescription" required></textarea>
+                <textarea name="issueDescription" required><?php echo $_POST['issueDescription'];?></textarea>
                 <br>
                 <input type="submit" value="Submit"/>
             </form>
@@ -40,3 +40,36 @@
         <script src="document.js"></script>
     </body>
 </html>
+
+<?php
+// https://www.geeksforgeeks.org/php/how-to-insert-form-data-into-database-using-php/
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "issues";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Collect and sanitize form data
+    $issueDescription = mysqli_real_escape_string($conn, $_POST['issueDescription']);
+
+
+    // Insert data into database
+    $sql = "INSERT INTO issuesDB (issue_description) 
+            VALUES ('$issueDescription')";
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close the connection
+    $conn->close();
+?>
