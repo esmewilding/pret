@@ -39,11 +39,15 @@ function formSubmit() {
 
 function showAdvanced() {
     // shows/hides additonal form fields
-    let x = document.getElementById("hidden");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
+    let x = document.getElementsByClassName("hidden");
+    console.log(x);
+    for(let i = 0; i < x.length; i++){
+        console.log(x[i]);
+        if (x[i].style.display === "block") {
+            x[i].style.display = "none";
+        } else {
+            x[i].style.display = "block";
+        }
     }
 }
 

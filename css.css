@@ -35,7 +35,7 @@ input, button {
     margin-left: 1%
 }
 
-#hidden {
+.hidden {
   color: #9C2007;
   display: none;
 }
